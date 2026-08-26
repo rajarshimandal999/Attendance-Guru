@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Attendance Tracker</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Student planning tool</p>
+        <h1>Smart Attendance Tracker</h1>
+        <p class="lede">Know where you stand, where you can finish, and what to do next.</p>
+      </div>
+      <div class="privacy-note">Data stays in this browser.</div>
+    </header>
+
+    <main class="layout">
+      <section class="panel input-panel" aria-labelledby="input-title">
+        <div class="section-heading">
+          <p class="eyebrow">Setup</p>
+          <h2 id="input-title">Attendance Details</h2>
+        </div>
+
+        <form id="attendanceForm" novalidate>
+          <label>
+            Subject
+            <input id="subject" name="subject" type="text" value="Physics" autocomplete="off">
+          </label>
+
+          <div class="field-grid">
+            <label>
+              Classes attended
+              <input id="attended" name="attended" type="number" min="0" step="1" value="61" required>
+            </label>
+
+            <label>
+              Total conducted
+              <input id="total" name="total" type="number" min="0" step="1" value="80" required>
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              Required attendance
+              <span class="input-suffix">
+                <input id="requiredPercentage" name="requiredPercentage" type="number" min="0" max="100" step="0.01" value="75" required>
+                <span>%</span>
+              </span>
+            </label>
+
+            <label>
+              Remaining classes
+              <input id="remainingClasses" name="remainingClasses" type="number" min="0" step="1" value="20" required>
+            </label>
+          </div>
+
+          <p id="formError" class="form-error" role="alert"></p>
+        </form>
+      </section>
+
+      <section class="dashboard" aria-live="polite">
+        <div class="hero-panel">
+          <div>
+            <p class="eyebrow" id="subjectLabel">Physics</p>
+            <h2 id="currentPercentage">0%</h2>
+            <p id="statusText">Enter your attendance details.</p>
+          </div>
+          <div class="ring" aria-label="Current attendance">
+            <div class="ring-inner">
+              <span id="ringValue">0%</span>
+              <small>current</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="target-bar" aria-label="Current attendance compared with target">
+          <div class="bar-track">
+            <div id="barFill" class="bar-fill"></div>
+            <div id="targetMarker" class="target-marker"></div>
+          </div>
+          <div class="bar-labels">
+            <span>0%</span>
+            <span id="targetLabel">Target 75%</span>
+            <span>100%</span>
+          </div>
+        </div>
+
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <span>Attended</span>
+            <strong id="attendedValue">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>Total</span>
+            <strong id="totalValue">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>Absent</span>
+            <strong id="absentValue">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>Buffer</span>
+            <strong id="bufferValue">0%</strong>
+          </article>
+          <article class="metric-card">
+            <span>Safe misses</span>
+            <strong id="safeMissesValue">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>Recover in</span>
+            <strong id="recoverValue">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>Best final</span>
+            <strong id="bestFinalValue">0%</strong>
+          </article>
+          <article class="metric-card">
+            <span>Future needed</span>
+            <strong id="futureNeededValue">0%</strong>
+          </article>
+        </div>
+
+        <section id="recommendation" class="recommendation">
+          <p class="eyebrow">Recommendation</p>
+          <h3 id="recommendationTitle">Ready</h3>
+          <p id="recommendationText">Your plan will appear here.</p>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
